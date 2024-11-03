@@ -14,9 +14,16 @@ spec:
       labels:
         app: vpromc
     spec:
-    containers:
-      - name: vpromc
-        image: your_image_name
-        ports:
-          - name: vpromc-port
-            containerPort: 11211
+      containers:
+        - name: vpromc
+          image: memcached
+          ports:
+            - name: vpromc-port
+              containerPort: 11211
+          resources:
+            requests:
+              memory: "256Mi" # Request 256 MiB of memory
+              cpu: "500m" # Request 500 milliCPU (0.5 CPU)
+            limits:
+              memory: "512Mi" # Limit to 512 MiB of memory
+              cpu: "1" # Limit to 1 CPU
