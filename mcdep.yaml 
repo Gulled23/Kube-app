@@ -1,22 +1,22 @@
-apiVerson: apps/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: vpromc
   labels:
     app: vpromc
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: vpromc
-  replicas: 1
-  templates:
+  template:
     metadata:
       labels:
         app: vpromc
-  spec:
+    spec:
     containers:
       - name: vpromc
-        image:
+        image: your_image_name
         ports:
           - name: vpromc-port
-            containersPort: 11211
+            containerPort: 11211
